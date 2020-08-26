@@ -1,89 +1,89 @@
 /*
-    1. 1³âÀº 365ÀÏ ÀÌ¶ó°í °¡Á¤ÇÏ°í
-        »ç¿øÀÇ ±Ù¹«ÀÏ ¼ö ¸¦ ³â ´ÜÀ§·Î Ç¥½ÃÇÏ°í
-        ´ë½Å ¼Ò¼öÀÌÇÏ´Â ¹ö¸®¼¼¿ä.
+    1. 1ë…„ì€ 365ì¼ ì´ë¼ê³  ê°€ì •í•˜ê³ 
+        ì‚¬ì›ì˜ ê·¼ë¬´ì¼ ìˆ˜ ë¥¼ ë…„ ë‹¨ìœ„ë¡œ í‘œì‹œí•˜ê³ 
+        ëŒ€ì‹  ì†Œìˆ˜ì´í•˜ëŠ” ë²„ë¦¬ì„¸ìš”.
         
-        Ç¥½ÃÇü½Ä ]
+        í‘œì‹œí˜•ì‹ ]
         
-            »ç¿øÀÌ¸§    ÀÔ»çÀÏ     ±Ù¹«³â¼ö
-            SMITH       80/00/00    40 ³â
+            ì‚¬ì›ì´ë¦„    ìž…ì‚¬ì¼     ê·¼ë¬´ë…„ìˆ˜
+            SMITH       80/00/00    40 ë…„
 */
 SELECT
-    ename »ç¿øÀÌ¸§,
-    hiredate ÀÔ»çÀÏ,
---    FLOOR((SYSDATE - hiredate) / 365.0 + 1) || ' ³â' ±Ù¹«³â¼ö
-    FLOOR(MONTHS_BETWEEN(SYSDATE, hiredate) / 12.0 + 1) || ' ³â' ±Ù¹«³â¼ö
+    ename ì‚¬ì›ì´ë¦„,
+    hiredate ìž…ì‚¬ì¼,
+--    FLOOR((SYSDATE - hiredate) / 365.0 + 1) || ' ë…„' ê·¼ë¬´ë…„ìˆ˜
+    FLOOR(MONTHS_BETWEEN(SYSDATE, hiredate) / 12.0 + 1) || ' ë…„' ê·¼ë¬´ë…„ìˆ˜
 FROM
     emp
 ;
 
 /*
-    2. »ç¿øÀÇ ÀÌ¸§, ÀÔ»çÀÏ, ±Ù¹«ÀÏÀ» Á¶È¸ÇÏ¼¼¿ä.
-        ´Ü ±Ù¹«ÀÏÀº ³â, ¿ù ´ÜÀ§·Î Ç¥ÇöÇÏ¼¼¿ä.
+    2. ì‚¬ì›ì˜ ì´ë¦„, ìž…ì‚¬ì¼, ê·¼ë¬´ì¼ì„ ì¡°íšŒí•˜ì„¸ìš”.
+        ë‹¨ ê·¼ë¬´ì¼ì€ ë…„, ì›” ë‹¨ìœ„ë¡œ í‘œí˜„í•˜ì„¸ìš”.
 */
 SELECT
-    ename »ç¿øÀÌ¸§,
-    hiredate ÀÔ»çÀÏ,
+    ename ì‚¬ì›ì´ë¦„,
+    hiredate ìž…ì‚¬ì¼,
     CONCAT(
-        FLOOR((SYSDATE - hiredate) / 365.0 + 1) || '³â ', -- ³â
-        FLOOR(MOD(SYSDATE-hiredate, 365.0) / 12) || '°³¿ù' -- °³¿ù
-    ) ±Ù¹«ÀÏ
+        FLOOR((SYSDATE - hiredate) / 365.0 + 1) || 'ë…„ ', -- ë…„
+        FLOOR(MOD(SYSDATE-hiredate, 365.0) / 12) || 'ê°œì›”' -- ê°œì›”
+    ) ê·¼ë¬´ì¼
 FROM
     emp
 ;
 
 /*
-    3. »ç¿øÀÌ Ã¹±Þ¿©¸¦ ¹ÞÀ» ¶§ ±îÁö ±Ù¹«ÀÏ ¼ö¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    3. ì‚¬ì›ì´ ì²«ê¸‰ì—¬ë¥¼ ë°›ì„ ë•Œ ê¹Œì§€ ê·¼ë¬´ì¼ ìˆ˜ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
-    ename »ç¿øÀÌ¸§, sal »ç¿ø±Þ¿©, hiredate ÀÔ»çÀÏ, LAST_DAY(hiredate) Ã¹¿ù±Þ³¯,
-    LAST_DAY(hiredate) - hiredate + 1 || ' ÀÏ' "Ã¹±Þ¿© D-DAY"
+    ename ì‚¬ì›ì´ë¦„, sal ì‚¬ì›ê¸‰ì—¬, hiredate ìž…ì‚¬ì¼, LAST_DAY(hiredate) ì²«ì›”ê¸‰ë‚ ,
+    LAST_DAY(hiredate) - hiredate + 1 || ' ì¼' "ì²«ê¸‰ì—¬ D-DAY"
 FROM
     emp
 ;
 
 /*
-    4. »ç¿øÀÌ ÀÔ»çÈÄ ¸ÂÀÌÇÏ´Â Ã¹ Åä¿äÀÏÀ» Á¶È¸ÇÏ¼¼¿ä.
+    4. ì‚¬ì›ì´ ìž…ì‚¬í›„ ë§žì´í•˜ëŠ” ì²« í† ìš”ì¼ì„ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
-    ename »ç¿øÀÌ¸§, hiredate ÀÔ»çÀÏ, NEXT_DAY(hiredate, 'Åä') Ã¹Åä¿äÀÏ
+    ename ì‚¬ì›ì´ë¦„, hiredate ìž…ì‚¬ì¼, NEXT_DAY(hiredate, 'í† ') ì²«í† ìš”ì¼
 FROM
     emp
 ;
 
 /*
-    5. ±Ù¹«³â¼ö´Â ÀÔ»çÇÑ ´ÞÀÇ 1ÀÏÀ» ±âÁØÀ¸·Î »êÃâÇØ¾ß ÇÑ´Ù.
-        »ç¿øÀÇ ±Ù¹«³â¼ö ±âÁØÀÏÀ» Á¶È¸ÇÏ¼¼¿ä.
-        ´Ü, 15ÀÏ ÀÌÀü ÀÔ»çÀÚ´Â ÇØ´ç ¿ùÀ» ±âÁØÀÏ·Î ÇÏ°í
-        16ÀÏ ÀÌÈÄ ÀÔ»çÀÚ´Â ÇØ´ç ¿ùÀÇ ´ÙÀ½´ÞÀ» ±âÁØÀ¸·Î ÇÑ´Ù.
+    5. ê·¼ë¬´ë…„ìˆ˜ëŠ” ìž…ì‚¬í•œ ë‹¬ì˜ 1ì¼ì„ ê¸°ì¤€ìœ¼ë¡œ ì‚°ì¶œí•´ì•¼ í•œë‹¤.
+        ì‚¬ì›ì˜ ê·¼ë¬´ë…„ìˆ˜ ê¸°ì¤€ì¼ì„ ì¡°íšŒí•˜ì„¸ìš”.
+        ë‹¨, 15ì¼ ì´ì „ ìž…ì‚¬ìžëŠ” í•´ë‹¹ ì›”ì„ ê¸°ì¤€ì¼ë¡œ í•˜ê³ 
+        16ì¼ ì´í›„ ìž…ì‚¬ìžëŠ” í•´ë‹¹ ì›”ì˜ ë‹¤ìŒë‹¬ì„ ê¸°ì¤€ìœ¼ë¡œ í•œë‹¤.
 */
 SELECT
-    ename »ç¿øÀÌ¸§, hiredate ÀÔ»çÀÏ,
-    ROUND(hiredate, 'MONTH') ±Ù¹«³â¼ö±âÁØÀÏ
+    ename ì‚¬ì›ì´ë¦„, hiredate ìž…ì‚¬ì¼,
+    ROUND(hiredate, 'MONTH') ê·¼ë¬´ë…„ìˆ˜ê¸°ì¤€ì¼
 FROM
     emp
 ;
 /*
-    6. »ç¿øÁß ¿ù¿äÀÏ¿¡ ÀÔ»çÇÑ »ç¿øÀÇ »ç¿øÀÌ¸§, ÀÔ»ç¿äÀÏÀ» Á¶È¸ÇÏ¼¼¿ä.
+    6. ì‚¬ì›ì¤‘ ì›”ìš”ì¼ì— ìž…ì‚¬í•œ ì‚¬ì›ì˜ ì‚¬ì›ì´ë¦„, ìž…ì‚¬ìš”ì¼ì„ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
-    ename »ç¿øÀÌ¸§, hiredate ÀÔ»çÀÏ,
-    TO_CHAR(hiredate, 'DAY') ÀÔ»ç¿äÀÏ
+    ename ì‚¬ì›ì´ë¦„, hiredate ìž…ì‚¬ì¼,
+    TO_CHAR(hiredate, 'DAY') ìž…ì‚¬ìš”ì¼
 FROM
     emp
 WHERE
-    TO_CHAR(hiredate, 'DAY') = '¿ù¿äÀÏ'
+    TO_CHAR(hiredate, 'DAY') = 'ì›”ìš”ì¼'
 ;
 
 /*
-    7. »ç¿ø ±Þ¿© Áß¿¡¼­ ¹é´ÜÀ§°¡ 0ÀÎ »ç¿øÀÇ »ç¿øÀÌ¸§, ±Þ¿© ¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    7. ì‚¬ì› ê¸‰ì—¬ ì¤‘ì—ì„œ ë°±ë‹¨ìœ„ê°€ 0ì¸ ì‚¬ì›ì˜ ì‚¬ì›ì´ë¦„, ê¸‰ì—¬ ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
     
-    ÈùÆ® ]
-        ¹®ÀÚ¿­·Î º¯È¯ÈÄ Ã³¸®ÇÑ´Ù.
+    ížŒíŠ¸ ]
+        ë¬¸ìžì—´ë¡œ ë³€í™˜í›„ ì²˜ë¦¬í•œë‹¤.
         
 */
 SELECT
-    ename »ç¿øÀÌ¸§, sal ±Þ¿©
+    ename ì‚¬ì›ì´ë¦„, sal ê¸‰ì—¬
 FROM
     emp
 WHERE
@@ -91,14 +91,17 @@ WHERE
 ;
     
 /*
-    8. »ç¿øÀÇ »ç¿øÀÌ¸§, ±Þ¿©, Ä¿¹Ì¼ÇÀ» Á¶È¸ÇÏ¼¼¿ä.
-        ´Ü, Ä¿¹Ì¼ÇÀÌ ¾ø´Â »ç¿øÀº NONEÀ¸·Î Ç¥½ÃµÇ°Ô Á¶È¸ÇÏ¼¼¿ä.
+    8. ì‚¬ì›ì˜ ì‚¬ì›ì´ë¦„, ê¸‰ì—¬, ì»¤ë¯¸ì…˜ì„ ì¡°íšŒí•˜ì„¸ìš”.
+        ë‹¨, ì»¤ë¯¸ì…˜ì´ ì—†ëŠ” ì‚¬ì›ì€ NONEìœ¼ë¡œ í‘œì‹œë˜ê²Œ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
-    ename »ç¿øÀÌ¸§, sal ±Þ¿©,
---    NVL(TO_CHAR(comm), 'NONE') Ä¿¹Ì¼Ç
---    NVL2(TO_CHAR(comm), TO_CHAR(comm), 'NONE') Ä¿¹Ì¼Ç
-    COALESCE(TO_CHAR(comm), 'NONE') Ä¿¹Ì¼Ç
+    ename ì‚¬ì›ì´ë¦„, sal ê¸‰ì—¬,
+--    NVL(TO_CHAR(comm), 'NONE') ì»¤ë¯¸ì…˜
+--    NVL2(TO_CHAR(comm), TO_CHAR(comm), 'NONE') ì»¤ë¯¸ì…˜
+--    COALESCE(TO_CHAR(comm), 'NONE') ì»¤ë¯¸ì…˜
+      DECODE(comm, NULL, 'NONE',
+            TO_CHAR(comm)
+      ) ì»¤ë¯¸ì…˜
 FROM
     emp
 ;
