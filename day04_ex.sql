@@ -1,7 +1,7 @@
--- day04 °úÁ¦
+-- day04 ê³¼ì œ
 
 /*
-    1. ÀÌ¸§ÀÌ SMITH »ç¿ø°ú µ¿ÀÏÇÑ Á÷±ÞÀ» °¡Áø »ç¿øÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    1. ì´ë¦„ì´ SMITH ì‚¬ì›ê³¼ ë™ì¼í•œ ì§ê¸‰ì„ ê°€ì§„ ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
     *
@@ -19,7 +19,7 @@ WHERE
 ;
 
 /*
-    2. »ç¿øµéÀÇ Æò±Õ±Þ¿©º¸´Ù Àû°Ô ¹Þ´Â »ç¿øÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    2. ì‚¬ì›ë“¤ì˜ í‰ê· ê¸‰ì—¬ë³´ë‹¤ ì ê²Œ ë°›ëŠ” ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
     *
@@ -34,7 +34,7 @@ WHERE
           )
 ;
 /*
-    3. ÃÖ°í±Þ¿©ÀÚÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    3. ìµœê³ ê¸‰ì—¬ìžì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
     *
@@ -49,7 +49,7 @@ WHERE
           )
 ;
 /*
-    4. KING »ç¿øº¸´Ù ´Ê°Ô ÀÔ»çÇÑ »ç¿øÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    4. KING ì‚¬ì›ë³´ë‹¤ ëŠ¦ê²Œ ìž…ì‚¬í•œ ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
     *
@@ -66,10 +66,10 @@ WHERE
                )
 ;
 /*
-    5. °¢ »ç¿øÀÇ ±Þ¿©ÀÇ Æò±Õ±Þ¿©ÀÇ Â÷ÀÌ¸¦ Á¶È¸ÇÏ¼¼¿ä. 
+    5. ê° ì‚¬ì›ì˜ ê¸‰ì—¬ì˜ í‰ê· ê¸‰ì—¬ì˜ ì°¨ì´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”. 
 */
 SELECT
-    ename »ç¿øÀÌ¸§, sal ±Þ¿©,
+    ename ì‚¬ì›ì´ë¦„, sal ê¸‰ì—¬,
     ROUND( 
         sal - (
                 SELECT
@@ -77,15 +77,17 @@ SELECT
                 FROM
                     emp
               )
-    , 2) "±Þ¿©-Æò±Õ±Þ¿©"
+    , 2) "ê¸‰ì—¬-í‰ê· ê¸‰ì—¬"
         
 FROM
     emp group by ename, sal
 ;
 
 /*
-    6. ºÎ¼­ÀÇ ±Þ¿©ÇÕ°è°¡ °¡Àå ³ôÀº ºÎ¼­ÀÇ »ç¿øµéÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä. 
+    6. ë¶€ì„œì˜ ê¸‰ì—¬í•©ê³„ê°€ ê°€ìž¥ ë†’ì€ ë¶€ì„œì˜ ì‚¬ì›ë“¤ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”. 
 */
+
+/*
 SELECT
     *
 FROM
@@ -101,25 +103,51 @@ WHERE
                 
             )
 ;
+*/
 
 SELECT
-    deptno, SUM(sal)
+    *
 FROM
     emp
-GROUP BY
-    deptno
+WHERE
+    deptno = (   -- ë¶€ì„œë³„ ê¸‰ì—¬í•©ê³„
+                        SELECT
+                            dno
+                        FROM (
+                            SELECT
+                                deptno dno, SUM(sal) sum
+                            FROM
+                                emp
+                            GROUP BY
+                                deptno
+                        )
+                        WHERE
+                            sum = (
+                                            SELECT
+                                                MAX(sum)
+                                            FROM(
+                                                SELECT
+                                                     deptno dno, SUM(sal) sum
+                                                FROM
+                                                    emp
+                                                 GROUP BY
+                                                    deptno
+                                                )
+                                        )
+                        
+    )
 ;
 
 
 /*
-    7. Ä¿¹Ì¼ÇÀ» ¹Þ´Â Á÷¿øÀÌ ÇÑ»ç¶÷ÀÌ¶óµµ ÀÖ´Â ºÎ¼­ÀÇ ¼Ò¼Ó »ç¿øµéÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    7. ì»¤ë¯¸ì…˜ì„ ë°›ëŠ” ì§ì›ì´ í•œì‚¬ëžŒì´ë¼ë„ ìžˆëŠ” ë¶€ì„œì˜ ì†Œì† ì‚¬ì›ë“¤ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
     *
 FROM
     emp
 WHERE
-    deptno = ( -- Ä¿¹Ì¼ÇÀ» ¹Þ´Â Á÷¿øÀÌ ÇÑ »ç¶÷ÀÌ¶óµµ ÀÖ´Â ºÎ¼­¹øÈ£ Á¶È¸
+    deptno = ( -- ì»¤ë¯¸ì…˜ì„ ë°›ëŠ” ì§ì›ì´ í•œ ì‚¬ëžŒì´ë¼ë„ ìžˆëŠ” ë¶€ì„œë²ˆí˜¸ ì¡°íšŒ
                 SELECT
                     DISTINCT deptno
                 FROM
@@ -133,14 +161,14 @@ WHERE
 ;
 
 /*
-    8. Æò±Õ±Þ¿©º¸´Ù ±Þ¿©°¡ ³ô°í ÀÌ¸§ÀÌ 4±ÛÀÚ ¶Ç´Â 5±ÛÀÚÀÎ »ç¿øÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    8. í‰ê· ê¸‰ì—¬ë³´ë‹¤ ê¸‰ì—¬ê°€ ë†’ê³  ì´ë¦„ì´ 4ê¸€ìž ë˜ëŠ” 5ê¸€ìžì¸ ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
     *
 FROM
     emp
 WHERE
--- Æò±Õ±Þ¿©º¸´Ù ±Þ¿©°¡ ³ô°í
+-- í‰ê· ê¸‰ì—¬ë³´ë‹¤ ê¸‰ì—¬ê°€ ë†’ê³ 
     sal > (
                 SELECT
                     AVG(sal)
@@ -148,12 +176,12 @@ WHERE
                     emp
             )
     AND
--- ÀÌ¸§ÀÌ 4±ÛÀÚ ¶Ç´Â 5±ÛÀÚÀÎ
+-- ì´ë¦„ì´ 4ê¸€ìž ë˜ëŠ” 5ê¸€ìžì¸
     LENGTH(ename) IN (4, 5)
 ;
 
 /*
-    9. »ç¿øÀÇ ÀÌ¸§ÀÌ 4±ÛÀÚ·ÎµÈ »ç¿ø°ú °°Àº Á÷±ÞÀÇ »ç¿øµéÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    9. ì‚¬ì›ì˜ ì´ë¦„ì´ 4ê¸€ìžë¡œëœ ì‚¬ì›ê³¼ ê°™ì€ ì§ê¸‰ì˜ ì‚¬ì›ë“¤ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
     *
@@ -162,16 +190,16 @@ FROM
 WHERE
     job IN (
                 SELECT
-                    job -- Á÷±ÞÀÇ
+                    job -- ì§ê¸‰ì˜
                 FROM
                     emp
                 WHERE
-                    LENGTH(ename) = 4 -- »ç¿øÀÇ ÀÌ¸§ÀÌ 4±ÛÀÚ·ÎµÈ »ç¿ø°ú °°Àº(SALESMAN, PRESIDENT, ANALYST)
+                    LENGTH(ename) = 4 -- ì‚¬ì›ì˜ ì´ë¦„ì´ 4ê¸€ìžë¡œëœ ì‚¬ì›ê³¼ ê°™ì€(SALESMAN, PRESIDENT, ANALYST)
           )
 ;
 
 /*
-    10. ÀÔ»ç³âµµ°¡ 81³âÀÌ ¾Æ´Ñ »ç¿ø°ú °°Àº ºÎ¼­¿¡ ÀÖ´Â »ç¿øÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    10. ìž…ì‚¬ë…„ë„ê°€ 81ë…„ì´ ì•„ë‹Œ ì‚¬ì›ê³¼ ê°™ì€ ë¶€ì„œì— ìžˆëŠ” ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
     *
@@ -180,15 +208,15 @@ FROM
 WHERE
     deptno IN (
                 SELECT
-                    deptno -- °°Àº ºÎ¼­¿¡ ÀÖ´Â
+                    deptno -- ê°™ì€ ë¶€ì„œì— ìžˆëŠ”
                 FROM
                     emp
                 WHERE
-                    TO_CHAR(hiredate, 'YYYY') <> '1981' -- ÀÔ»ç³âµµ°¡ 81³âÀÌ ¾Æ´Ñ »ç¿ø°ú
+                    TO_CHAR(hiredate, 'YYYY') <> '1981' -- ìž…ì‚¬ë…„ë„ê°€ 81ë…„ì´ ì•„ë‹Œ ì‚¬ì›ê³¼
              )
 ;
 /*
-    11. Á÷±Þº° Æò±Õ±Þ¿©º¸´Ù Á¶±ÝÀÌ¶óµµ ¸¹ÀÌ ¹Þ´Â »ç¿øÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.(ANY)
+    11. ì§ê¸‰ë³„ í‰ê· ê¸‰ì—¬ë³´ë‹¤ ì¡°ê¸ˆì´ë¼ë„ ë§Žì´ ë°›ëŠ” ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.(ANY)
 */
 SELECT
     *
@@ -206,7 +234,7 @@ WHERE
 ;
 
 /*
-    12. ÀÔ»ç³âµµº° Æò±Õ±Þ¿©º¸´Ù ¸¹ÀÌ ¹Þ´Â »ç¶÷ÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    12. ìž…ì‚¬ë…„ë„ë³„ í‰ê· ê¸‰ì—¬ë³´ë‹¤ ë§Žì´ ë°›ëŠ” ì‚¬ëžŒì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
     *
@@ -224,9 +252,9 @@ WHERE
 ;
 
 /*
-    13. ÃÖ°í ±Þ¿©ÀÚÀÇ ÀÌ¸§±æÀÌ¿Í °°Àº ÀÌ¸§±æÀÌ¸¦ °®´Â »ç¿øÀÌ Á¸ÀçÇÏ¸é
-        ¸ðµç »ç¿øÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ°í
-        ¾Æ´Ï¸é Á¶È¸ÇÏÁö ¸¶¼¼¿ä.(EXISTS)
+    13. ìµœê³  ê¸‰ì—¬ìžì˜ ì´ë¦„ê¸¸ì´ì™€ ê°™ì€ ì´ë¦„ê¸¸ì´ë¥¼ ê°–ëŠ” ì‚¬ì›ì´ ì¡´ìž¬í•˜ë©´
+        ëª¨ë“  ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ê³ 
+        ì•„ë‹ˆë©´ ì¡°íšŒí•˜ì§€ ë§ˆì„¸ìš”.(EXISTS)
 */
 SELECT
     *
