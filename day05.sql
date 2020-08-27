@@ -1,83 +1,83 @@
 -- day05
 
 /*
-    JOIN(Á¶ÀÎ)
-    ==> µÎ°³ ÀÌ»óÀÇ Å×ÀÌºí¿¡ ÀÖ´Â ³»¿ëÀ» µ¿½Ã¿¡ °Ë»öÇÏ´Â ¹æ¹ý
+    JOIN(ì¡°ì¸)
+    ==> ë‘ê°œ ì´ìƒì˜ í…Œì´ë¸”ì— ìžˆëŠ” ë‚´ìš©ì„ ë™ì‹œì— ê²€ìƒ‰í•˜ëŠ” ë°©ë²•
     
-    Âü°í ]
-        ¿À¶óÅ¬Àº ER(ENTITY RELATION) ÇüÅÂÀÇ µ¥ÀÌÅÍº£ÀÌ½º¶ó°íµµ ÇÑ´Ù.(°ü°èÇü µ¥ÀÌÅÍº£ÀÌ½º)
+    ì°¸ê³  ]
+        ì˜¤ë¼í´ì€ ER(ENTITY RELATION) í˜•íƒœì˜ ë°ì´í„°ë² ì´ìŠ¤ë¼ê³ ë„ í•œë‹¤.(ê´€ê³„í˜• ë°ì´í„°ë² ì´ìŠ¤)
         
-        ER ÇüÅÂ¶õ?
-            ¿£Æ¼Æ¼³¢¸®ÀÇ ¸±·¹ÀÌ¼Ç½Ê °ü°è¸¦ ÀÌ¿ëÇØ¼­ µ¥ÀÌÅÍ¸¦ °ü¸®ÇÑ´Ù.
+        ER í˜•íƒœëž€?
+            ì—”í‹°í‹°ë¼ë¦¬ì˜ ë¦´ë ˆì´ì…˜ì‹­ ê´€ê³„ë¥¼ ì´ìš©í•´ì„œ ë°ì´í„°ë¥¼ ê´€ë¦¬í•œë‹¤.
         
-        ¿¹¸¦ µé¾î ¼îÇÎ¸ô¿¡¼­ ÆÇ¸Å°ü¸®¸¦ ÇÏ°íÀÚ ÇÏ¸é
+        ì˜ˆë¥¼ ë“¤ì–´ ì‡¼í•‘ëª°ì—ì„œ íŒë§¤ê´€ë¦¬ë¥¼ í•˜ê³ ìž í•˜ë©´
         
-        ´©°¡      -   ÀÌ¸§, ÁÖ¼Ò, ÀüÈ­¹øÈ£
-        ¾ðÁ¦      -   ÁÖ¹®ÀÏÀÚ  
-        ¹«¾ùÀ»    -   »óÇ°ÀÌ¸§, °¡°Ý, Á¦Á¶È¸»ç, ...
-        ¸î°³
+        ëˆ„ê°€      -   ì´ë¦„, ì£¼ì†Œ, ì „í™”ë²ˆí˜¸
+        ì–¸ì œ      -   ì£¼ë¬¸ì¼ìž  
+        ë¬´ì—‡ì„    -   ìƒí’ˆì´ë¦„, ê°€ê²©, ì œì¡°íšŒì‚¬, ...
+        ëª‡ê°œ
         
-        ±Ç¿µ¼±     ¿ëÀÎ½Ã ¼öÁö±¸ 010-6232-6752  20/08/27    ¿¡¸£¸Þ½º ¾ÖÇÃ½º¸¶Æ®¿öÄ¡     1
-        À±¿ä¼Á     ¼­¿ï½Ã °ü¾Ç±¸ 010-5569-8600  20/08/27    ¿¡¸£¸Þ½º ¾ÖÇÃ½º¸¶Æ®¿öÄ¡     3
-        ÀÌÁö¿ì     ÀÎÃµ½Ã ºÎÆò±¸ 010-3843-4798  20/08/27    LG ±×·¥  LG ³ëÆ®ºÏ          1
-        ÀüÀº¼®     ¼­¿ï½Ã °ü¾Ç±¸ 010-5569-8600  20/08/26    LG ±×·¥  LG ³ëÆ®ºÏ          5
+        ê¶Œì˜ì„      ìš©ì¸ì‹œ ìˆ˜ì§€êµ¬ 010-6232-6752  20/08/27    ì—ë¥´ë©”ìŠ¤ ì• í”ŒìŠ¤ë§ˆíŠ¸ì›Œì¹˜     1
+        ìœ¤ìš”ì…‰     ì„œìš¸ì‹œ ê´€ì•…êµ¬ 010-5569-8600  20/08/27    ì—ë¥´ë©”ìŠ¤ ì• í”ŒìŠ¤ë§ˆíŠ¸ì›Œì¹˜     3
+        ì´ì§€ìš°     ì¸ì²œì‹œ ë¶€í‰êµ¬ 010-3843-4798  20/08/27    LG ê·¸ëž¨  LG ë…¸íŠ¸ë¶          1
+        ì „ì€ì„     ì„œìš¸ì‹œ ê´€ì•…êµ¬ 010-5569-8600  20/08/26    LG ê·¸ëž¨  LG ë…¸íŠ¸ë¶          5
         
-        ¿ø·¡´Â ÀÌ·¸°Ô ÀúÀåÇØ ³õ¾Æ¾ß ÇÏ´Âµ¥...
-        Áßº¹ µ¥ÀÌÅÍ´Â ´Ù¸¥ Å×ÀÌºí·Î º¸°üÇÏµµ·Ï ÇÑ´Ù.
+        ì›ëž˜ëŠ” ì´ë ‡ê²Œ ì €ìž¥í•´ ë†“ì•„ì•¼ í•˜ëŠ”ë°...
+        ì¤‘ë³µ ë°ì´í„°ëŠ” ë‹¤ë¥¸ í…Œì´ë¸”ë¡œ ë³´ê´€í•˜ë„ë¡ í•œë‹¤.
         
-        ±¸¸ÅÁ¤º¸    --------->  ¿£Æ¼Æ¼
-            ±Ç¿µ¼± ¿¡¸£¸Þ½º     1   20/08/27
-            À±¿ä¼Á ¿¡¸£¸Þ½º     3   20/08/27
-            ÀÌÁö¿ì ±×·¥         1   20/08/27
-            ÀüÀº¼® ±×·¥         5   20/08/26
+        êµ¬ë§¤ì •ë³´    --------->  ì—”í‹°í‹°
+            ê¶Œì˜ì„  ì—ë¥´ë©”ìŠ¤     1   20/08/27
+            ìœ¤ìš”ì…‰ ì—ë¥´ë©”ìŠ¤     3   20/08/27
+            ì´ì§€ìš° ê·¸ëž¨         1   20/08/27
+            ì „ì€ì„ ê·¸ëž¨         5   20/08/26
         
         
-        ±¸¸ÅÀÚÁ¤º¸
-            ±Ç¿µ¼±     ¿ëÀÎ½Ã ¼öÁö±¸ 010-6232-6752
-            À±¿ä¼Á     ¼­¿ï½Ã °ü¾Ç±¸ 010-5569-8600  
-            ÀÌÁö¿ì     ÀÎÃµ½Ã ºÎÆò±¸ 010-3843-4798
-            ÀüÀº¼®     ¼­¿ï½Ã °ü¾Ç±¸ 010-5569-8600  
+        êµ¬ë§¤ìžì •ë³´
+            ê¶Œì˜ì„      ìš©ì¸ì‹œ ìˆ˜ì§€êµ¬ 010-6232-6752
+            ìœ¤ìš”ì…‰     ì„œìš¸ì‹œ ê´€ì•…êµ¬ 010-5569-8600  
+            ì´ì§€ìš°     ì¸ì²œì‹œ ë¶€í‰êµ¬ 010-3843-4798
+            ì „ì€ì„     ì„œìš¸ì‹œ ê´€ì•…êµ¬ 010-5569-8600  
         
-        »óÇ°Á¤º¸
-            ¿¡¸£¸Þ½º ¾ÖÇÃ½º¸¶Æ®¿öÄ¡
-            LG ±×·¥   LG ³ëÆ®ºÏ
+        ìƒí’ˆì •ë³´
+            ì—ë¥´ë©”ìŠ¤ ì• í”ŒìŠ¤ë§ˆíŠ¸ì›Œì¹˜
+            LG ê·¸ëž¨   LG ë…¸íŠ¸ë¶
         
-        ÀÇ ÇüÅÂ·Î ºÐ¸®ÇØ¼­ ÀúÀåÇÑ´Ù.
+        ì˜ í˜•íƒœë¡œ ë¶„ë¦¬í•´ì„œ ì €ìž¥í•œë‹¤.
     
-        Âü°í ]
-            ¿À¶óÅ¬Àº Ã³À½ºÎÅÍ ¿©·¯°³ÀÇ Å×ÀÌºíÀ» µ¿½Ã¿¡ °Ë»öÇÏ´Â ±â´ÉÀº ÀÌ¹Ì °¡Áö°í ÀÖ´Ù.
-            ==> ÀÌÃ³·³ µÎ°³ ÀÌ»óÀÇ Å×ÀÌºíÀ» µ¿½Ã¿¡ °Ë»öÇÏ¸é
-                Cartesian Product °¡ ¸¸µé¾îÁö°í ±× °á°ú¸¦ °Ë»öÇÏ°Ô µÈ´Ù.
+        ì°¸ê³  ]
+            ì˜¤ë¼í´ì€ ì²˜ìŒë¶€í„° ì—¬ëŸ¬ê°œì˜ í…Œì´ë¸”ì„ ë™ì‹œì— ê²€ìƒ‰í•˜ëŠ” ê¸°ëŠ¥ì€ ì´ë¯¸ ê°€ì§€ê³  ìžˆë‹¤.
+            ==> ì´ì²˜ëŸ¼ ë‘ê°œ ì´ìƒì˜ í…Œì´ë¸”ì„ ë™ì‹œì— ê²€ìƒ‰í•˜ë©´
+                Cartesian Product ê°€ ë§Œë“¤ì–´ì§€ê³  ê·¸ ê²°ê³¼ë¥¼ ê²€ìƒ‰í•˜ê²Œ ëœë‹¤.
                 
-        Á¶ÀÎÀÌ¶õ?
-            Catresian Product ¿¡ ÀÇÇØ¼­ Åº»ýµÈ °á°ú¹° Áß¿¡¼­
-            ¿øÇÏ´Â °á°ú¹°¸¸ »Ì¾Æ³»´Â ±â¼ú
+        ì¡°ì¸ì´ëž€?
+            Catresian Product ì— ì˜í•´ì„œ íƒ„ìƒëœ ê²°ê³¼ë¬¼ ì¤‘ì—ì„œ
+            ì›í•˜ëŠ” ê²°ê³¼ë¬¼ë§Œ ë½‘ì•„ë‚´ëŠ” ê¸°ìˆ 
         
-    1. Inner Join   -- cartesian product ÀÇ °á°ú ÁýÇÕ ¾È¿¡¼­ µ¥ÀÌÅÍ¸¦ ÃßÃâÇÏ´Â Á¶ÀÎ
-        ==> °¡Àå ÀÏ¹ÝÀûÀÎ Á¶ÀÎ ¹æ½Ä
-            µÎ°³ÀÇ Å×ÀÌºí Áß¿¡¼­ °°Àº µ¥ÀÌÅÍ¸¸ °ñ¶ó¼­ Á¶È¸ÇÏ´Â Á¶ÀÎ
+    1. Inner Join   -- cartesian product ì˜ ê²°ê³¼ ì§‘í•© ì•ˆì—ì„œ ë°ì´í„°ë¥¼ ì¶”ì¶œí•˜ëŠ” ì¡°ì¸
+        ==> ê°€ìž¥ ì¼ë°˜ì ì¸ ì¡°ì¸ ë°©ì‹
+            ë‘ê°œì˜ í…Œì´ë¸” ì¤‘ì—ì„œ ê°™ì€ ë°ì´í„°ë§Œ ê³¨ë¼ì„œ ì¡°íšŒí•˜ëŠ” ì¡°ì¸
         
-        Çü½Ä ]
+        í˜•ì‹ ]
             SELECT
-                Á¶È¸ÇÊµå, ....
+                ì¡°íšŒí•„ë“œ, ....
             FROM
-                Å×ÀÌºí1, Å×ÀÌºí2, ...
+                í…Œì´ë¸”1, í…Œì´ë¸”2, ...
             WHERE
-                Á¶ÀÎÁ¶°Ç½Ä
+                ì¡°ì¸ì¡°ê±´ì‹
             ;
             
         1) Equi Join
-            --> µ¿µîºñ±³ ¿¬»êÀÚ·Î µ¥ÀÌÅÍ¸¦ ÃßÃâÇÏ´Â Á¶ÀÎ
+            --> ë™ë“±ë¹„êµ ì—°ì‚°ìžë¡œ ë°ì´í„°ë¥¼ ì¶”ì¶œí•˜ëŠ” ì¡°ì¸
         
         2) Non-Equi Join
-            --> µ¿µîºñ±³ ¿¬»êÀÚ°¡ ¾Æ´Ñ ¿¬»êÀÚ·Î µ¥ÀÌÅÍ¸¦ ÃßÃâÇÏ´Â Á¶ÀÎ
+            --> ë™ë“±ë¹„êµ ì—°ì‚°ìžê°€ ì•„ë‹Œ ì—°ì‚°ìžë¡œ ë°ì´í„°ë¥¼ ì¶”ì¶œí•˜ëŠ” ì¡°ì¸
                 
         
-    2. Outer Join   -- cartesian product ÀÇ °á°ú ÁýÇÕ ¾È¿¡ ¾ø´Â µ¥ÀÌÅÍ¸¦ ÃßÃâÇÏ´Â Á¶ÀÎ
-        °á°úÁýÇÕ ³»¿¡ ¾ø´Â µ¥ÀÌÅÍ¸¦ ¸¸µê
+    2. Outer Join   -- cartesian product ì˜ ê²°ê³¼ ì§‘í•© ì•ˆì— ì—†ëŠ” ë°ì´í„°ë¥¼ ì¶”ì¶œí•˜ëŠ” ì¡°ì¸
+        ê²°ê³¼ì§‘í•© ë‚´ì— ì—†ëŠ” ë°ì´í„°ë¥¼ ë§Œë“¦
         
     3. SELF JOIN
-        - ÇÏ³ªÀÇ Å×ÀÌºíÀ» ¿©·¯¹ø ³ª¿­ÇØ¼­ ¿øÇÏ´Â µ¥ÀÌÅÍ¸¦ Á¶È¸ÇÏ´Â Á¶ÀÎ
+        - í•˜ë‚˜ì˜ í…Œì´ë¸”ì„ ì—¬ëŸ¬ë²ˆ ë‚˜ì—´í•´ì„œ ì›í•˜ëŠ” ë°ì´í„°ë¥¼ ì¡°íšŒí•˜ëŠ” ì¡°ì¸
     
 */
 SELECT
@@ -110,20 +110,20 @@ WHERE
 
 --------------------------------------------------------------------------------
 -- Equi Join
--- »ç¿øÀÇ ÀÌ¸§, Á÷±Þ, ±Þ¿©, ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§À» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ì˜ ì´ë¦„, ì§ê¸‰, ê¸‰ì—¬, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„ì„ ì¡°íšŒí•˜ì„¸ìš”.
 SELECT
-    ename ÀÌ¸§, job Á÷±Þ, sal ±Þ¿©, emp.deptno ºÎ¼­¹øÈ£, dname ºÎ¼­ÀÌ¸§
+    ename ì´ë¦„, job ì§ê¸‰, sal ê¸‰ì—¬, emp.deptno ë¶€ì„œë²ˆí˜¸, dname ë¶€ì„œì´ë¦„
 FROM
     emp, dept
 WHERE
-    -- Á¶ÀÎÁ¶°Ç
+    -- ì¡°ì¸ì¡°ê±´
     emp.deptno = dept.deptno
 ;
 
 -- Non-Equi Join
--- »ç¿øÀÇ »ç¿ø¹øÈ£, »ç¿øÀÌ¸§, »ç¿øÁ÷±Þ, »ç¿ø±Þ¿©, ±Þ¿©µî±Þ À» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ì˜ ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì‚¬ì›ì§ê¸‰, ì‚¬ì›ê¸‰ì—¬, ê¸‰ì—¬ë“±ê¸‰ ì„ ì¡°íšŒí•˜ì„¸ìš”.
 SELECT
-    empno »ç¿ø¹øÈ£, ename »ç¿øÀÌ¸§, job »ç¿øÁ÷±Þ, sal »ç¿ø±Þ¿©, grade ±Þ¿©µî±Þ 
+    empno ì‚¬ì›ë²ˆí˜¸, ename ì‚¬ì›ì´ë¦„, job ì‚¬ì›ì§ê¸‰, sal ì‚¬ì›ê¸‰ì—¬, grade ê¸‰ì—¬ë“±ê¸‰ 
 FROM
     emp, salgrade
 WHERE
@@ -135,12 +135,12 @@ WHERE
 ;
 
 /*
-    Á¶ÀÎ¿¡¼­µµ Á¶ÀÎ Á¶°Ç ÀÌ¿ÜÀÇ ÀÏ¹ÝÁ¶°ÇÀ» ¾ó¸¶µçÁö »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+    ì¡°ì¸ì—ì„œë„ ì¡°ì¸ ì¡°ê±´ ì´ì™¸ì˜ ì¼ë°˜ì¡°ê±´ì„ ì–¼ë§ˆë“ ì§€ ì‚¬ìš©í•  ìˆ˜ ìžˆë‹¤.
 */
 
--- 81³â ÀÔ»çÇÑ »ç¶÷ÀÇ »ç¿øÀÌ¸§, Á÷±Þ, ºÎ¼­¹øÈ£, ºÎ¼­À§Ä¡ ¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- 81ë…„ ìž…ì‚¬í•œ ì‚¬ëžŒì˜ ì‚¬ì›ì´ë¦„, ì§ê¸‰, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œìœ„ì¹˜ ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 SELECT
-    ename »ç¿øÀÌ¸§, job Á÷±Þ, hiredate ÀÔ»çÀÏ, e.deptno ºÎ¼­¹øÈ£, loc ºÎ¼­À§Ä¡
+    ename ì‚¬ì›ì´ë¦„, job ì§ê¸‰, hiredate ìž…ì‚¬ì¼, e.deptno ë¶€ì„œë²ˆí˜¸, loc ë¶€ì„œìœ„ì¹˜
 FROM
     emp e, dept d
 WHERE
@@ -149,9 +149,9 @@ WHERE
 ;
 
 -- SELF JOIN
--- »ç¿øÀÇ »ç¿ø¹øÈ£, »ç¿øÀÌ¸§, »ç¿øÁ÷±Þ, ºÎ¼­¹øÈ£, »ó»çÀÌ¸§ À» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ì˜ ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì‚¬ì›ì§ê¸‰, ë¶€ì„œë²ˆí˜¸, ìƒì‚¬ì´ë¦„ ì„ ì¡°íšŒí•˜ì„¸ìš”.
 SELECT
-    e1.empno »ç¿ø¹øÈ£, e1.ename »ç¿øÀÌ¸§, e1.job »ç¿øÁ÷±Þ, e1.deptno ºÎ¼­¹øÈ£, e2.ename »ó»çÀÌ¸§
+    e1.empno ì‚¬ì›ë²ˆí˜¸, e1.ename ì‚¬ì›ì´ë¦„, e1.job ì‚¬ì›ì§ê¸‰, e1.deptno ë¶€ì„œë²ˆí˜¸, e2.ename ìƒì‚¬ì´ë¦„
 FROM    
     emp e1, emp e2
 WHERE
@@ -160,19 +160,19 @@ WHERE
 
 /*
     Outer Join
-        ==> Á¶È¸ÇÒ µ¥ÀÌÅÍ°¡ Cartesian Product ³»¿¡ ¾ø´Â µ¥ÀÌÅÍ¸¦ Á¶È¸ÇÏ´Â Á¶ÀÎ
+        ==> ì¡°íšŒí•  ë°ì´í„°ê°€ Cartesian Product ë‚´ì— ì—†ëŠ” ë°ì´í„°ë¥¼ ì¡°íšŒí•˜ëŠ” ì¡°ì¸
         
-        Çü½Ä ]
+        í˜•ì‹ ]
             SELECT
-                Á¶È¸ÇÒ ÇÊµå
+                ì¡°íšŒí•  í•„ë“œ
             FROM
-                Å×ÀÌºí1, Å×ÀÌºí2
+                í…Œì´ë¸”1, í…Œì´ë¸”2
             WHERE
-                Å×ÀÌºí1.ÇÊµå(+) = Å×ÀÌºí2.ÇÊµå(+)
+                í…Œì´ë¸”1.í•„ë“œ(+) = í…Œì´ë¸”2.í•„ë“œ(+)
             ;
             
-            ÁÖÀÇ»çÇ× ]
-                (+) ±âÈ£´Â NULL ·Î Ç¥½ÃµÇ¾î¾ß ÇÒ µ¥ÀÌÅÍ ÂÊ¿¡ ºÙ¿©ÁØ´Ù.                
+            ì£¼ì˜ì‚¬í•­ ]
+                (+) ê¸°í˜¸ëŠ” NULL ë¡œ í‘œì‹œë˜ì–´ì•¼ í•  ë°ì´í„° ìª½ì— ë¶™ì—¬ì¤€ë‹¤.                
 */
 
 SELECT
@@ -180,74 +180,74 @@ SELECT
 FROM
     emp e, emp s
 WHERE
-    e.mgr = s.empno(+) -- NULL °ªÀÌ ³ª¿À´Â Å×ÀÌºí ÂÊ¿¡ +¸¦ ºÙÀÎ´Ù.    
+    e.mgr = s.empno(+) -- NULL ê°’ì´ ë‚˜ì˜¤ëŠ” í…Œì´ë¸” ìª½ì— +ë¥¼ ë¶™ì¸ë‹¤.    
 ;
 
 /*
-    Âü°í ]
-        Å×ÀÌºíÀÌ ¿©·¯°³ FROM Àý¿¡ ³ª¿­ÀÌ µÇ¸é
-        ´ëºÎºÐ Ãß°¡µÈ Å×ÀÌºí °¹¼ö¸¸Å­ Á¶ÀÎ Á¶°ÇÀÌ ºÎ¿©µÇ¾î¾ß ÇÑ´Ù.
-        ÀÌ¶§ ³í¸®¿¬»êÀÚ´Â AND·Î ¿¬°áÇÏ¸é µÈ´Ù.
+    ì°¸ê³  ]
+        í…Œì´ë¸”ì´ ì—¬ëŸ¬ê°œ FROM ì ˆì— ë‚˜ì—´ì´ ë˜ë©´
+        ëŒ€ë¶€ë¶„ ì¶”ê°€ëœ í…Œì´ë¸” ê°¯ìˆ˜ë§Œí¼ ì¡°ì¸ ì¡°ê±´ì´ ë¶€ì—¬ë˜ì–´ì•¼ í•œë‹¤.
+        ì´ë•Œ ë…¼ë¦¬ì—°ì‚°ìžëŠ” ANDë¡œ ì—°ê²°í•˜ë©´ ëœë‹¤.
 */
 
--- »ç¿øÀÇ »ç¿øÀÌ¸§, ÀÔ»çÀÏ, ±Þ¿©, ±Þ¿©µî±Þ, ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§À» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ì˜ ì‚¬ì›ì´ë¦„, ìž…ì‚¬ì¼, ê¸‰ì—¬, ê¸‰ì—¬ë“±ê¸‰, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„ì„ ì¡°íšŒí•˜ì„¸ìš”.
 SELECT
-    ename »ç¿øÀÌ¸§, hiredate ÀÔ»çÀÏ, sal ±Þ¿©, grade ±Þ¿©µî±Þ, e.deptno ºÎ¼­¹øÈ£, dname ºÎ¼­ÀÌ¸§
+    ename ì‚¬ì›ì´ë¦„, hiredate ìž…ì‚¬ì¼, sal ê¸‰ì—¬, grade ê¸‰ì—¬ë“±ê¸‰, e.deptno ë¶€ì„œë²ˆí˜¸, dname ë¶€ì„œì´ë¦„
 FROM
     emp e, dept d, salgrade
 WHERE
-    -- ºÎ¼­Å×ÀÌºí°ú »ç¿øÅ×ÀÌºí Á¶ÀÎ
+    -- ë¶€ì„œí…Œì´ë¸”ê³¼ ì‚¬ì›í…Œì´ë¸” ì¡°ì¸
     e.deptno = d.deptno
-    -- »ç¿øÅ×ÀÌºí°ú ±Þ¿©µî±ÞÅ×ÀÌºí Á¶ÀÎ
+    -- ì‚¬ì›í…Œì´ë¸”ê³¼ ê¸‰ì—¬ë“±ê¸‰í…Œì´ë¸” ì¡°ì¸
     AND sal BETWEEN losal AND hisal
 ;
 
--- ¹®Á¦ ] »ç¿øÀÇ »ç¿ø¹øÈ£, »ç¿øÀÌ¸§, Á÷±Þ, ±Þ¿©, ±Þ¿©µî±Þ, »ó»ç¹øÈ£, »ó»çÀÌ¸§, ºÎ¼­¹øÈ£, ºÎ¼­À§Ä¡ ¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ë¬¸ì œ ] ì‚¬ì›ì˜ ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì§ê¸‰, ê¸‰ì—¬, ê¸‰ì—¬ë“±ê¸‰, ìƒì‚¬ë²ˆí˜¸, ìƒì‚¬ì´ë¦„, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œìœ„ì¹˜ ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 SELECT
-    e.empno »ç¿ø¹øÈ£, e.ename »ç¿øÀÌ¸§, e.job Á÷±Þ, e.sal ±Þ¿©, grade ±Þ¿©µî±Þ, e.mgr »ó»ç¹øÈ£, s.ename »ó»çÀÌ¸§, e.deptno ºÎ¼­¹øÈ£, loc ºÎ¼­À§Ä¡
+    e.empno ì‚¬ì›ë²ˆí˜¸, e.ename ì‚¬ì›ì´ë¦„, e.job ì§ê¸‰, e.sal ê¸‰ì—¬, grade ê¸‰ì—¬ë“±ê¸‰, e.mgr ìƒì‚¬ë²ˆí˜¸, s.ename ìƒì‚¬ì´ë¦„, e.deptno ë¶€ì„œë²ˆí˜¸, loc ë¶€ì„œìœ„ì¹˜
 FROM
-    -- »ç¿øÅ×ÀÌºí, ºÎ¼­Å×ÀÌºí, ±Þ¿©µî±Þ Å×ÀÌºí
+    -- ì‚¬ì›í…Œì´ë¸”, ë¶€ì„œí…Œì´ë¸”, ê¸‰ì—¬ë“±ê¸‰ í…Œì´ë¸”
     emp e, emp s, dept d, salgrade
 WHERE
-    -- »ç¿øÅ×ÀÌºí°ú ºÎ¼­Å×ÀÌºí Á¶ÀÎ
+    -- ì‚¬ì›í…Œì´ë¸”ê³¼ ë¶€ì„œí…Œì´ë¸” ì¡°ì¸
     e.deptno = d.deptno
-    -- »ç¿øÅ×ÀÌºí°ú ±Þ¿©µî±ÞÅ×ÀÌºí Á¶ÀÎ
+    -- ì‚¬ì›í…Œì´ë¸”ê³¼ ê¸‰ì—¬ë“±ê¸‰í…Œì´ë¸” ì¡°ì¸
     AND e.sal BETWEEN losal AND hisal
-    -- »ç¿øÅ×ÀÌºí self join
+    -- ì‚¬ì›í…Œì´ë¸” self join
     AND e.mgr = s.empno(+)
 ;
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /*
-    ¹®Á¦ 1 ]
-        Á÷±ÞÀÌ 'MANAGER'ÀÎ »ç¿øÀÇ
-        ÀÌ¸§, Á÷±Þ, ÀÔ»çÀÏ, ±Þ¿©, ºÎ¼­ÀÌ¸§À» Á¶È¸ÇÏ¼¼¿ä.
+    ë¬¸ì œ 1 ]
+        ì§ê¸‰ì´ 'MANAGER'ì¸ ì‚¬ì›ì˜
+        ì´ë¦„, ì§ê¸‰, ìž…ì‚¬ì¼, ê¸‰ì—¬, ë¶€ì„œì´ë¦„ì„ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
-    ename ÀÌ¸§, job Á÷±Þ, hiredate ÀÔ»çÀÏ, sal ±Þ¿©, dname ºÎ¼­ÀÌ¸§
+    ename ì´ë¦„, job ì§ê¸‰, hiredate ìž…ì‚¬ì¼, sal ê¸‰ì—¬, dname ë¶€ì„œì´ë¦„
 FROM
---  Á÷¿ø Å×ÀÌºí°ú ºÎ¼­ Å×ÀÌºí
+--  ì§ì› í…Œì´ë¸”ê³¼ ë¶€ì„œ í…Œì´ë¸”
     emp, dept
 WHERE
     job = 'MANAGER'
     AND emp.deptno = dept.deptno
 ;
 /*
-    ¹®Á¦ 2 ]
-        ±Þ¿©°¡ °¡Àå ÀûÀº »ç¶÷ÀÇ
-        ÀÌ¸§, Á÷±Þ, ÀÔ»çÀÏ, ±Þ¿©, ºÎ¼­ÀÌ¸§, ºÎ¼­À§Ä¡¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    ë¬¸ì œ 2 ]
+        ê¸‰ì—¬ê°€ ê°€ìž¥ ì ì€ ì‚¬ëžŒì˜
+        ì´ë¦„, ì§ê¸‰, ìž…ì‚¬ì¼, ê¸‰ì—¬, ë¶€ì„œì´ë¦„, ë¶€ì„œìœ„ì¹˜ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
-    ename ÀÌ¸§, job Á÷±Þ, hiredate ÀÔ»çÀÏ, sal ±Þ¿©, dname ºÎ¼­ÀÌ¸§, loc ºÎ¼­À§Ä¡
+    ename ì´ë¦„, job ì§ê¸‰, hiredate ìž…ì‚¬ì¼, sal ê¸‰ì—¬, dname ë¶€ì„œì´ë¦„, loc ë¶€ì„œìœ„ì¹˜
 FROM
---  Á÷¿ø Å×ÀÌºí°ú ºÎ¼­ Å×ÀÌºí
+--  ì§ì› í…Œì´ë¸”ê³¼ ë¶€ì„œ í…Œì´ë¸”
     emp, dept
 WHERE
---  ºÎ¼­ÀÌ¸§ Á¶ÀÎ
+--  ë¶€ì„œì´ë¦„ ì¡°ì¸
     emp.deptno = dept.deptno
         
--- ±Þ¿©°¡ °¡Àå ÀûÀº »ç¶÷
+-- ê¸‰ì—¬ê°€ ê°€ìž¥ ì ì€ ì‚¬ëžŒ
     AND sal = (
                 SELECT
                     MIN(sal)
@@ -256,90 +256,90 @@ WHERE
               )
 ;
 /*
-    ¹®Á¦ 3 ]
-        »ç¿øÀÌ¸§ÀÌ 5±ÛÀÚÀÎ »ç¿øÀÇ
-        ÀÌ¸§, Á÷±Þ, ÀÔ»çÀÏ, ±Þ¿©, ±Þ¿©µî±ÞÀ» Á¶È¸ÇÏ¼¼¿ä.
+    ë¬¸ì œ 3 ]
+        ì‚¬ì›ì´ë¦„ì´ 5ê¸€ìžì¸ ì‚¬ì›ì˜
+        ì´ë¦„, ì§ê¸‰, ìž…ì‚¬ì¼, ê¸‰ì—¬, ê¸‰ì—¬ë“±ê¸‰ì„ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
-    ename ÀÌ¸§, job Á÷±Þ, hiredate ÀÔ»çÀÏ, sal ±Þ¿©, grade ±Þ¿©µî±Þ
+    ename ì´ë¦„, job ì§ê¸‰, hiredate ìž…ì‚¬ì¼, sal ê¸‰ì—¬, grade ê¸‰ì—¬ë“±ê¸‰
 FROM
---  »ç¿ø Å×ÀÌºí°ú ±Þ¿©µî±Þ Å×ÀÌºí
+--  ì‚¬ì› í…Œì´ë¸”ê³¼ ê¸‰ì—¬ë“±ê¸‰ í…Œì´ë¸”
     emp, salgrade
 WHERE
---  ±Þ¿©µî±Þ Á¶ÀÎ
+--  ê¸‰ì—¬ë“±ê¸‰ ì¡°ì¸
     sal BETWEEN losal AND hisal
---  »ç¿øÀÌ¸§ÀÌ 5±ÛÀÚ
+--  ì‚¬ì›ì´ë¦„ì´ 5ê¸€ìž
     AND LENGTH(ename) = 5
 ;
 /*
-    ¹®Á¦ 4 ]
-        ÀÔ»çÀÏÀÌ 81³âÀÌ¸é¼­ Á÷±ÞÀÌ CLERK ÀÎ »ç¿øÀÇ
-        ÀÌ¸§, Á÷±Þ, ÀÔ»çÀÏ, ±Þ¿©, ±Þ¿©µî±Þ, ºÎ¼­ÀÌ¸§, ºÎ¼­À§Ä¡¸¦ Á¶È¸ÇÏ¼¼¿ä.
+    ë¬¸ì œ 4 ]
+        ìž…ì‚¬ì¼ì´ 81ë…„ì´ë©´ì„œ ì§ê¸‰ì´ CLERK ì¸ ì‚¬ì›ì˜
+        ì´ë¦„, ì§ê¸‰, ìž…ì‚¬ì¼, ê¸‰ì—¬, ê¸‰ì—¬ë“±ê¸‰, ë¶€ì„œì´ë¦„, ë¶€ì„œìœ„ì¹˜ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
-    ename ÀÌ¸§, job Á÷±Þ, hiredate ÀÔ»çÀÏ, sal ±Þ¿©, grade ±Þ¿©µî±Þ, dname ºÎ¼­ÀÌ¸§, loc ºÎ¼­À§Ä¡
+    ename ì´ë¦„, job ì§ê¸‰, hiredate ìž…ì‚¬ì¼, sal ê¸‰ì—¬, grade ê¸‰ì—¬ë“±ê¸‰, dname ë¶€ì„œì´ë¦„, loc ë¶€ì„œìœ„ì¹˜
 FROM
---  »ç¿ø Å×ÀÌºí, ±Þ¿©µî±ÞÅ×ÀÌºí, ºÎ¼­Å×ÀÌºí
+--  ì‚¬ì› í…Œì´ë¸”, ê¸‰ì—¬ë“±ê¸‰í…Œì´ë¸”, ë¶€ì„œí…Œì´ë¸”
     emp, salgrade, dept
 WHERE
---  ÀÔ»çÀÏÀÌ 81³âÀÌ¸é¼­ Á÷±ÞÀÌ CLERKÀÎ »ç¿ø
+--  ìž…ì‚¬ì¼ì´ 81ë…„ì´ë©´ì„œ ì§ê¸‰ì´ CLERKì¸ ì‚¬ì›
     TO_CHAR(hiredate, 'YY') = '81'
     AND job = 'CLERK'
---  »ç¿øÅ×ÀÌºí°ú ±Þ¿©µî±ÞÅ×ÀÌºí Á¶ÀÎ
+--  ì‚¬ì›í…Œì´ë¸”ê³¼ ê¸‰ì—¬ë“±ê¸‰í…Œì´ë¸” ì¡°ì¸
     AND sal BETWEEN losal AND hisal
---  »ç¿øÅ×ÀÌºí°ú ºÎ¼­Å×ÀÌºí Á¶ÀÎ
+--  ì‚¬ì›í…Œì´ë¸”ê³¼ ë¶€ì„œí…Œì´ë¸” ì¡°ì¸
     AND emp.deptno = dept.deptno
 ;
 /*
-    ¹®Á¦ 5 ]
-        »ç¿øÀÇ ÀÌ¸§, Á÷±Þ, ±Þ¿©, »ó»çÀÌ¸§, ±Þ¿©µî±ÞÀ» Á¶È¸ÇÏ¼¼¿ä.
+    ë¬¸ì œ 5 ]
+        ì‚¬ì›ì˜ ì´ë¦„, ì§ê¸‰, ê¸‰ì—¬, ìƒì‚¬ì´ë¦„, ê¸‰ì—¬ë“±ê¸‰ì„ ì¡°íšŒí•˜ì„¸ìš”.
 */  
 SELECT
-    e.ename ÀÌ¸§, e.job Á÷±Þ, e.sal ±Þ¿©, s.ename »ó»çÀÌ¸§, grade ±Þ¿©µî±Þ
+    e.ename ì´ë¦„, e.job ì§ê¸‰, e.sal ê¸‰ì—¬, s.ename ìƒì‚¬ì´ë¦„, grade ê¸‰ì—¬ë“±ê¸‰
 FROM
--- »ç¿øÅ×ÀÌºí µÎ °³¿Í, ±Þ¿©µî±Þ Å×ÀÌºí
+-- ì‚¬ì›í…Œì´ë¸” ë‘ ê°œì™€, ê¸‰ì—¬ë“±ê¸‰ í…Œì´ë¸”
     emp e, emp s, salgrade
 WHERE
 --  Self Join
     e.mgr = s.empno(+)
--- »ç¿øÅ×ÀÌºí°ú ±Þ¿©µî±Þ Å×ÀÌºí Á¶ÀÎ
+-- ì‚¬ì›í…Œì´ë¸”ê³¼ ê¸‰ì—¬ë“±ê¸‰ í…Œì´ë¸” ì¡°ì¸
     AND e.sal BETWEEN losal AND hisal
 ;
 /*
-    ¹®Á¦ 6 ]
-        »ç¿øÀÇ
-        ÀÌ¸§, Á÷±Þ, ±Þ¿©, »ó»çÀÌ¸§, ºÎ¼­ÀÌ¸§, ºÎ¼­À§Ä¡, ±Þ¿©µî±ÞÀ» Á¶È¸ÇÏ¼¼¿ä.
+    ë¬¸ì œ 6 ]
+        ì‚¬ì›ì˜
+        ì´ë¦„, ì§ê¸‰, ê¸‰ì—¬, ìƒì‚¬ì´ë¦„, ë¶€ì„œì´ë¦„, ë¶€ì„œìœ„ì¹˜, ê¸‰ì—¬ë“±ê¸‰ì„ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
-    e.ename ÀÌ¸§, e.job Á÷±Þ, e.sal ±Þ¿©, s.ename »ó»çÀÌ¸§, dname ºÎ¼­ÀÌ¸§, loc ºÎ¼­À§Ä¡, grade ±Þ¿©µî±Þ
+    e.ename ì´ë¦„, e.job ì§ê¸‰, e.sal ê¸‰ì—¬, s.ename ìƒì‚¬ì´ë¦„, dname ë¶€ì„œì´ë¦„, loc ë¶€ì„œìœ„ì¹˜, grade ê¸‰ì—¬ë“±ê¸‰
 FROM
     emp e, emp s, dept d, salgrade
 WHERE
 --  Self Join
     e.mgr = s.empno(+)
--- »ç¿øÅ×ÀÌºí°ú ºÎ¼­Å×ÀÌºí Á¶ÀÎ
+-- ì‚¬ì›í…Œì´ë¸”ê³¼ ë¶€ì„œí…Œì´ë¸” ì¡°ì¸
     AND e.deptno = d.deptno
--- »ç¿øÅ×ÀÌºí°ú ±Þ¿©µî±Þ Å×ÀÌºí Á¶ÀÎ
+-- ì‚¬ì›í…Œì´ë¸”ê³¼ ê¸‰ì—¬ë“±ê¸‰ í…Œì´ë¸” ì¡°ì¸
     AND e.sal BETWEEN losal AND hisal    
 ;
 /*
-    ¹®Á¦ 7 ]
-        »ç¿øÀÇ
-        ÀÌ¸§, Á÷±Þ, ±Þ¿©, »ó»çÀÌ¸§, ºÎ¼­ÀÌ¸§, ºÎ¼­À§Ä¡, ±Þ¿©µî±ÞÀ» Á¶È¸ÇÏ´Âµ¥
-        È¸»ç Æò±Õ±Þ¿©º¸´Ù ±Þ¿©°¡ ³ôÀº »ç¿ø¸¸ Á¶È¸ÇÏ¼¼¿ä.
+    ë¬¸ì œ 7 ]
+        ì‚¬ì›ì˜
+        ì´ë¦„, ì§ê¸‰, ê¸‰ì—¬, ìƒì‚¬ì´ë¦„, ë¶€ì„œì´ë¦„, ë¶€ì„œìœ„ì¹˜, ê¸‰ì—¬ë“±ê¸‰ì„ ì¡°íšŒí•˜ëŠ”ë°
+        íšŒì‚¬ í‰ê· ê¸‰ì—¬ë³´ë‹¤ ê¸‰ì—¬ê°€ ë†’ì€ ì‚¬ì›ë§Œ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
-    e.ename ÀÌ¸§, e.job Á÷±Þ, e.sal ±Þ¿©, s.ename »ó»çÀÌ¸§, dname ºÎ¼­ÀÌ¸§, loc ºÎ¼­À§Ä¡, grade ±Þ¿©µî±Þ
+    e.ename ì´ë¦„, e.job ì§ê¸‰, e.sal ê¸‰ì—¬, s.ename ìƒì‚¬ì´ë¦„, dname ë¶€ì„œì´ë¦„, loc ë¶€ì„œìœ„ì¹˜, grade ê¸‰ì—¬ë“±ê¸‰
 FROM
     emp e, emp s, dept d, salgrade
 WHERE
 --  Self Join
     e.mgr = s.empno(+)
--- »ç¿øÅ×ÀÌºí°ú ºÎ¼­Å×ÀÌºí Á¶ÀÎ
+-- ì‚¬ì›í…Œì´ë¸”ê³¼ ë¶€ì„œí…Œì´ë¸” ì¡°ì¸
     AND e.deptno = d.deptno
--- »ç¿øÅ×ÀÌºí°ú ±Þ¿©µî±Þ Å×ÀÌºí Á¶ÀÎ
+-- ì‚¬ì›í…Œì´ë¸”ê³¼ ê¸‰ì—¬ë“±ê¸‰ í…Œì´ë¸” ì¡°ì¸
     AND e.sal BETWEEN losal AND hisal
--- È¸»ç Æò±Õ±Þ¿©º¸´Ù ±Þ¿©°¡ ³ôÀº »ç¿ø¸¸ Á¶È¸
+-- íšŒì‚¬ í‰ê· ê¸‰ì—¬ë³´ë‹¤ ê¸‰ì—¬ê°€ ë†’ì€ ì‚¬ì›ë§Œ ì¡°íšŒ
     AND e.sal > (
                     SELECT
                         AVG(sal)
@@ -349,29 +349,29 @@ WHERE
 ;
 
 /*
-    ¹®Á¦ 8 ]
-        »ç¿øÀÇ ÀÌ¸§, Á÷±Þ, ±Þ¿©, ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§, ºÎ¼­À§Ä¡¸¦ Á¶È¸ÇÏ¼¼¿ä.
-        ´Ü, »ç¿øÀÌ ¾ø´Â ºÎ¼­µµ °°ÀÌ Á¶È¸ÇÏ¼¼¿ä.
+    ë¬¸ì œ 8 ]
+        ì‚¬ì›ì˜ ì´ë¦„, ì§ê¸‰, ê¸‰ì—¬, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„, ë¶€ì„œìœ„ì¹˜ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
+        ë‹¨, ì‚¬ì›ì´ ì—†ëŠ” ë¶€ì„œë„ ê°™ì´ ì¡°íšŒí•˜ì„¸ìš”.
 */
 SELECT
-    ename ÀÌ¸§, job Á÷±Þ, sal ±Þ¿©, dept.deptno ºÎ¼­¹øÈ£, dname ºÎ¼­ÀÌ¸§, loc ºÎ¼­À§Ä¡
+    ename ì´ë¦„, job ì§ê¸‰, sal ê¸‰ì—¬, dept.deptno ë¶€ì„œë²ˆí˜¸, dname ë¶€ì„œì´ë¦„, loc ë¶€ì„œìœ„ì¹˜
 FROM
--- »ç¿ø Å×ÀÌºí°ú ºÎ¼­ Å×ÀÌºí
+-- ì‚¬ì› í…Œì´ë¸”ê³¼ ë¶€ì„œ í…Œì´ë¸”
     emp, dept
 WHERE
--- »ç¿øÅ×ÀÌºí°ú ºÎ¼­ Å×ÀÌºí Á¶ÀÎ
+-- ì‚¬ì›í…Œì´ë¸”ê³¼ ë¶€ì„œ í…Œì´ë¸” ì¡°ì¸
     emp.deptno(+) = dept.deptno
 ;
 
--- ±Þ¿©°¡ ºÎ¼­ Æò±Õ±Þ¿©º¸´Ù ¸¹Àº »ç¿øÀÇ
---      »ç¿ø¹øÈ£, »ç¿øÀÌ¸§, ±Þ¿©, ºÎ¼­Æò±Õ±Þ¿©, ºÎ¼­»ç¿ø¼ö, ºÎ¼­±Þ¿©ÇÕ°è¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ê¸‰ì—¬ê°€ ë¶€ì„œ í‰ê· ê¸‰ì—¬ë³´ë‹¤ ë§Žì€ ì‚¬ì›ì˜
+--      ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ê¸‰ì—¬, ë¶€ì„œí‰ê· ê¸‰ì—¬, ë¶€ì„œì‚¬ì›ìˆ˜, ë¶€ì„œê¸‰ì—¬í•©ê³„ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 /*
-    Inline View : ¼­ºêÁúÀÇ Áß from Àý¿¡ À§Ä¡ÇÏ´Â ¼­ºêÁúÀÇ
+    Inline View : ì„œë¸Œì§ˆì˜ ì¤‘ from ì ˆì— ìœ„ì¹˜í•˜ëŠ” ì„œë¸Œì§ˆì˜
     
-                    ÀÎ¶óÀÎ ºäµµ Á¶ÀÎ¿¡ »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+                    ì¸ë¼ì¸ ë·°ë„ ì¡°ì¸ì— ì‚¬ìš©í•  ìˆ˜ ìžˆë‹¤.
 */
 
--- 10¹ø ºÎ¼­ÀÇ ±Þ¿©Æò±Õ
+-- 10ë²ˆ ë¶€ì„œì˜ ê¸‰ì—¬í‰ê· 
 SELECT
     avg(sal)
 FROM
@@ -381,15 +381,15 @@ WHERE
 ;
 
 SELECT
-    empno »ç¿ø¹øÈ£, ename »ç¿øÀÌ¸§, sal ±Þ¿©, e.deptno ºÎ¼­¹øÈ£,
+    empno ì‚¬ì›ë²ˆí˜¸, ename ì‚¬ì›ì´ë¦„, sal ê¸‰ì—¬, e.deptno ë¶€ì„œë²ˆí˜¸,
     (
         SELECT
             ROUND(AVG(sal), 2)
         FROM
             emp
         WHERE
-            deptno = e.deptno -- deptno´Â ¿ø·¡ ÀÖ´ø deptnoÀÌ°í, e.deptno´Â ºñ±³ÇÏ°íÀÚ ÇÏ´Â deptno ÀÌ´Ù.
-    ) ºÎ¼­Æò±Õ±Þ¿©,
+            deptno = e.deptno -- deptnoëŠ” ì›ëž˜ ìžˆë˜ deptnoì´ê³ , e.deptnoëŠ” ë¹„êµí•˜ê³ ìž í•˜ëŠ” deptno ì´ë‹¤.
+    ) ë¶€ì„œí‰ê· ê¸‰ì—¬,
     (
         SELECT
             COUNT(*)
@@ -397,7 +397,7 @@ SELECT
             emp
         WHERE
             deptno = e.deptno
-    ) ºÎ¼­»ç¿ø¼ö,
+    ) ë¶€ì„œì‚¬ì›ìˆ˜,
     (
         SELECT
             SUM(sal)
@@ -405,7 +405,7 @@ SELECT
             emp
         WHERE
             deptno = e.deptno
-    ) ºÎ¼­±Ý¾×ÇÕ°è
+    ) ë¶€ì„œê¸ˆì•¡í•©ê³„
 FROM
     emp e
 WHERE
@@ -423,8 +423,8 @@ WHERE
 ;
 
 
---      »ç¿ø¹øÈ£, »ç¿øÀÌ¸§, ±Þ¿©, ºÎ¼­¹øÈ£, 
---      ºÎ¼­Æò±Õ±Þ¿©, ºÎ¼­»ç¿ø¼ö, ºÎ¼­±Þ¿©ÇÕ°è ¸¦ Á¶È¸ÇÏ¼¼¿ä.
+--      ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ê¸‰ì—¬, ë¶€ì„œë²ˆí˜¸, 
+--      ë¶€ì„œí‰ê· ê¸‰ì—¬, ë¶€ì„œì‚¬ì›ìˆ˜, ë¶€ì„œê¸‰ì—¬í•©ê³„ ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 SELECT
     empno, ename, sal, deptno, ROUND(avg, 2), cnt, sum
 FROM
@@ -445,10 +445,10 @@ WHERE
 
 
 
--- »ç¿ø¼ö°¡ °¡Àå ¸¹Àº ºÎ¼­ÀÇ ºÎ¼­¹øÈ£, ºÎ¼­±Þ¿©ÇÕ°è, ºÎ¼­¿ø¼ö ¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ìˆ˜ê°€ ê°€ìž¥ ë§Žì€ ë¶€ì„œì˜ ë¶€ì„œë²ˆí˜¸, ë¶€ì„œê¸‰ì—¬í•©ê³„, ë¶€ì„œì›ìˆ˜ ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 /*
 SELECT
-    DISTINCT deptno ºÎ¼­¹øÈ£,
+    DISTINCT deptno ë¶€ì„œë²ˆí˜¸,
     (
         SELECT
             SUM(sal)
@@ -458,7 +458,7 @@ SELECT
             deptno = e.deptno
         GROUP BY
             deptno
-    ) ºÎ¼­±Þ¿©ÇÕ°è,
+    ) ë¶€ì„œê¸‰ì—¬í•©ê³„,
     (
         SELECT
             COUNT(*)
@@ -468,7 +468,7 @@ SELECT
             deptno = e.deptno
         GROUP BY
             deptno
-    ) ºÎ¼­¿ø¼ö
+    ) ë¶€ì„œì›ìˆ˜
 FROM
     emp e
 WHERE 
@@ -504,7 +504,7 @@ WHERE
 */
 
 SELECT
-    deptno ºÎ¼­¹øÈ£, SUM(sal) ºÎ¼­±Þ¿©ÇÕ°è, COUNT(*) ºÎ¼­¿ø¼ö
+    deptno ë¶€ì„œë²ˆí˜¸, SUM(sal) ë¶€ì„œê¸‰ì—¬í•©ê³„, COUNT(*) ë¶€ì„œì›ìˆ˜
 FROM
     emp
 GROUP BY
@@ -527,7 +527,7 @@ FROM
     hr.employees
 ;
 
--- quiz. first_name ÀÇ µÎ¹øÂ° ±ÛÀÚ°¡ 'a' ÀÎ »ç¿øÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- quiz. first_name ì˜ ë‘ë²ˆì§¸ ê¸€ìžê°€ 'a' ì¸ ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 SELECT
     *
 FROM
@@ -540,19 +540,19 @@ WHERE
 
 /*
     ANSI JOIN
-    ==> ÁúÀÇ ¸í·ÉÀº µ¥ÀÌÅÍº£ÀÌ½º(DBMS)¿¡ µû¶ó¼­ ¹®¹ýÀÌ ´Þ¶óÁø´Ù.
+    ==> ì§ˆì˜ ëª…ë ¹ì€ ë°ì´í„°ë² ì´ìŠ¤(DBMS)ì— ë”°ë¼ì„œ ë¬¸ë²•ì´ ë‹¬ë¼ì§„ë‹¤.
         
-        ANSI SQL ÀÌ¶õ?
-            ¹Ì±¹ÀÇ ANSI ÇùÈ¸¿¡¼­ °øÅëÀûÀ¸·Î ½ÇÇà°¡´ÉÇÑ ÁúÀÇ¸í·ÉÀ» ¸¸µé¾î¼­ »ç¿ëÇÏµµ·Ï ÇØ³õÀº °Í.
+        ANSI SQL ì´ëž€?
+            ë¯¸êµ­ì˜ ANSI í˜‘íšŒì—ì„œ ê³µí†µì ìœ¼ë¡œ ì‹¤í–‰ê°€ëŠ¥í•œ ì§ˆì˜ëª…ë ¹ì„ ë§Œë“¤ì–´ì„œ ì‚¬ìš©í•˜ë„ë¡ í•´ë†“ì€ ê²ƒ.
             
     1. CROSS JOIN
-        ==> ¿À¶óÅ¬¿¡¼­ÀÇ Cartesion Product ¸¦ ¸¸µé¾î³»´Â Á¶ÀÎ°ú °°Àº Á¶ÀÎ
+        ==> ì˜¤ë¼í´ì—ì„œì˜ Cartesion Product ë¥¼ ë§Œë“¤ì–´ë‚´ëŠ” ì¡°ì¸ê³¼ ê°™ì€ ì¡°ì¸
         
-        Çü½Ä ]
+        í˜•ì‹ ]
             SELECT
-                ÇÊµåÀÌ¸§
+                í•„ë“œì´ë¦„
             FROM
-                Å×ÀÌºí1    CROSS JOIN  Å×ÀÌºí2
+                í…Œì´ë¸”1    CROSS JOIN  í…Œì´ë¸”2
             ;
 */
 
@@ -579,23 +579,24 @@ FROM
 ------------------------------------------------------------------------------------------------------------        
         INNER JOIN
         
-        Çü½Ä ]
+        í˜•ì‹ ]
             SELECT
-                Á¶È¸ÇÒ ÇÊµå
+                ì¡°íšŒí•  í•„ë“œ
             FROM
-                Å×ÀÌºí1 INNER JOIN Å×ÀÌºí2
+                í…Œì´ë¸”1 INNER JOIN í…Œì´ë¸”2
             ON
-                Á¶ÀÎÁ¶°Ç½Ä
+                ì¡°ì¸ì¡°ê±´ì‹
             ;
             
-        Âü°í ]
-         ANSI JOIN¿¡¼­´Â 
-         Á¶ÀÎ Á¶°ÇÀº ON¿¡ ±â¼úÇÏ°í
+        ì°¸ê³  ]
+         ANSI JOINì—ì„œëŠ” 
+         ì¡°ì¸ ì¡°ê±´ì€ ONì— ê¸°ìˆ í•˜ê³ 
+         ì¼ë°˜ ì¡°ê±´ì€ WHERE ì ˆì— ê¸°ìˆ í•˜ëŠ” ê²ƒì„ ì›ì¹™ìœ¼ë¡œ í•œë‹¤.
 */
 
--- »ç¿øÀÇ ÀÌ¸§, Á÷±Þ, ºÎ¼­ÀÌ¸§À» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ì˜ ì´ë¦„, ì§ê¸‰, ë¶€ì„œì´ë¦„ì„ ì¡°íšŒí•˜ì„¸ìš”.
 SELECT
-    ename »ç¿øÀÌ¸§, job Á÷±Þ, dname ºÎ¼­ÀÌ¸§
+    ename ì‚¬ì›ì´ë¦„, job ì§ê¸‰, dname ë¶€ì„œì´ë¦„
 FROM
     emp e INNER JOIN dept d
 ON
@@ -606,45 +607,45 @@ WHERE
 
 /*
     ANSI OUTER JOIN
-    ==> ORACLE OUTER JOIN°ú °°Àº Á¶ÀÎ
-        Á¶ÀÎ Á¶°Ç½Ä¿¡ ¸¸Á·ÇÏ´Â µ¥ÀÌÅÍ¸¸ Á¶È¸ÇÏ°í
-        Á¶ÀÎ Á¶°Ç½Ä¿¡ ¸ÂÁö ¾Ê´Â µ¥ÀÌÅÍ´Â °á°ú¿¡¼­ Á¦¿ÜÇÑ´Ù.
-        ÀÌ·± °æ¿ì Á¶ÀÎ Á¶°Ç½Ä¿¡ Æ÷ÇÔµÇÁö ¾Ê´Â µ¥ÀÌÅÍµµ
-        Á¶È¸¿¡ Æ÷ÇÔµÇµµ·Ï ÇÏ´Â Á¶°Ç½ÄÀÌ OUTER JOIN ÀÌ´Ù.
+    ==> ORACLE OUTER JOINê³¼ ê°™ì€ ì¡°ì¸
+        ì¡°ì¸ ì¡°ê±´ì‹ì— ë§Œì¡±í•˜ëŠ” ë°ì´í„°ë§Œ ì¡°íšŒí•˜ê³ 
+        ì¡°ì¸ ì¡°ê±´ì‹ì— ë§žì§€ ì•ŠëŠ” ë°ì´í„°ëŠ” ê²°ê³¼ì—ì„œ ì œì™¸í•œë‹¤.
+        ì´ëŸ° ê²½ìš° ì¡°ì¸ ì¡°ê±´ì‹ì— í¬í•¨ë˜ì§€ ì•ŠëŠ” ë°ì´í„°ë„
+        ì¡°íšŒì— í¬í•¨ë˜ë„ë¡ í•˜ëŠ” ì¡°ê±´ì‹ì´ OUTER JOIN ì´ë‹¤.
     
-    Çü½Ä ]
+    í˜•ì‹ ]
         SELECT
         
         FROM
-            Å×ÀÌºí1 [ LEFT | RIGHT | FULL ] OUTER JOIN Å×ÀÌºí2
+            í…Œì´ë¸”1 [ LEFT | RIGHT | FULL ] OUTER JOIN í…Œì´ë¸”2
         ON
-            Á¶ÀÎÁ¶°Ç½Ä
+            ì¡°ì¸ì¡°ê±´ì‹
         ;
         
-        Âü°í ]
-            LEFT | RIGHT | FULL ÀÇ ÀÇ¹Ì
-            ¿À¶óÅ¬ Á¶ÀÎÀÇ (+) ¿Í Á¤¹Ý´ëÀÇ »ç¿ë¹ý
-            Á¶°Ç¿¡ ¸ÂÁö ¾Ê¾Æ¼­ Á¶È¸¿¡¼­ Á¦¿ÜµÈ µ¥ÀÌÅÍÀÇ À§Ä¡¸¦ ÁöÁ¤ÇÑ´Ù.
-            Áï ¿ÞÂÊÅ×ÀÌºí¿¡ ÀÖ´Â µ¥ÀÌÅÍ¸¦ Æ÷ÇÔÇÒÁö
-                ¿À¸¥ÂÊÅ×ÀÌºí¿¡ ÀÖ´Â µ¥ÀÌÅÍ¸¦ Æ÷ÇÔÇÒÁö¸¦ °áÁ¤ÇÏ´Â °ÍÀÌ´Ù.
+        ì°¸ê³  ]
+            LEFT | RIGHT | FULL ì˜ ì˜ë¯¸
+            ì˜¤ë¼í´ ì¡°ì¸ì˜ (+) ì™€ ì •ë°˜ëŒ€ì˜ ì‚¬ìš©ë²•
+            ì¡°ê±´ì— ë§žì§€ ì•Šì•„ì„œ ì¡°íšŒì—ì„œ ì œì™¸ëœ ë°ì´í„°ì˜ ìœ„ì¹˜ë¥¼ ì§€ì •í•œë‹¤.
+            ì¦‰ ì™¼ìª½í…Œì´ë¸”ì— ìžˆëŠ” ë°ì´í„°ë¥¼ í¬í•¨í• ì§€
+                ì˜¤ë¥¸ìª½í…Œì´ë¸”ì— ìžˆëŠ” ë°ì´í„°ë¥¼ í¬í•¨í• ì§€ë¥¼ ê²°ì •í•˜ëŠ” ê²ƒì´ë‹¤.
                 
-        Âü°í ]
-            ¿À¶óÅ¬ Á¶ÀÎ¿¡¼­´Â Ç®¾Æ¿ìÅÍ Á¶ÀÎÀ» »ç¿ëÇÏÁö ¸øÇßÁö¸¸
-            ANSI JOIN ¿¡¼­´Â ¾çÂÊ ¸ðµÎ ºÙÀÏ ¼ö ÀÖµµ·Ï ÇÏ°í ÀÖÀ¸¸ç
-            ÀÌ¶§ FULL ÀÌ¶ó°í ¾²¸é µÈ´Ù.
+        ì°¸ê³  ]
+            ì˜¤ë¼í´ ì¡°ì¸ì—ì„œëŠ” í’€ì•„ìš°í„° ì¡°ì¸ì„ ì‚¬ìš©í•˜ì§€ ëª»í–ˆì§€ë§Œ
+            ANSI JOIN ì—ì„œëŠ” ì–‘ìª½ ëª¨ë‘ ë¶™ì¼ ìˆ˜ ìžˆë„ë¡ í•˜ê³  ìžˆìœ¼ë©°
+            ì´ë•Œ FULL ì´ë¼ê³  ì“°ë©´ ëœë‹¤.
 */
 
--- »ç¿øÀÇ »ç¿øÀÌ¸§, Á÷±Þ, »ó»ç¹øÈ£, »ó»çÀÌ¸§, »ó»çÁ÷±ÞÀ» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ì˜ ì‚¬ì›ì´ë¦„, ì§ê¸‰, ìƒì‚¬ë²ˆí˜¸, ìƒì‚¬ì´ë¦„, ìƒì‚¬ì§ê¸‰ì„ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    e.ename »ç¿øÀÌ¸§, e.job »ç¿øÁ÷±Þ, e.mgr »ó»ç¹øÈ£, s.ename »ó»çÀÌ¸§, s.job »ó»çÁ÷±Þ
+    e.ename ì‚¬ì›ì´ë¦„, e.job ì‚¬ì›ì§ê¸‰, e.mgr ìƒì‚¬ë²ˆí˜¸, s.ename ìƒì‚¬ì´ë¦„, s.job ìƒì‚¬ì§ê¸‰
 FROM
     emp e LEFT OUTER JOIN emp s
 ON
     e.mgr = s.empno
 ;
 
--- »ç¿øÀÇ »ç¿øÀÌ¸§, Á÷±Þ, ±Þ¿©, ºÎ¼­¹øÈ£, ºÎ¼­À§Ä¡, ±Þ¿©µî±ÞÀ» Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ì˜ ì‚¬ì›ì´ë¦„, ì§ê¸‰, ê¸‰ì—¬, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œìœ„ì¹˜, ê¸‰ì—¬ë“±ê¸‰ì„ ì¡°íšŒí•˜ì„¸ìš”.
 SELECT
     ename, job, sal, e.deptno, loc, grade
 FROM
@@ -659,28 +660,28 @@ ON
 --------------------------------------------------------------------------------------------------------
 /*
     NATURAL JOIN
-    ==> ÀÚµ¿Á¶ÀÎÀ¸·Î ÇØ¼®ÇÏ¸é µÈ´Ù.
-        ¹Ýµå½Ã Á¶ÀÎ Á¶°Ç½Ä¿¡ »ç¿ëÇÏ´Â ÇÊµåÀÇ ÀÌ¸§ÀÌ µ¿ÀÏÇÏ°í
-        ¹Ýµå½Ã µ¿ÀÏÇÑ ÇÊµå°¡ ÇÑ°³ÀÎ °æ¿ì¿¡ ÇÑÇØ¼­ »ç¿ëÇÒ ¼ö ÀÖ´Â Á¶ÀÎ
+    ==> ìžë™ì¡°ì¸ìœ¼ë¡œ í•´ì„í•˜ë©´ ëœë‹¤.
+        ë°˜ë“œì‹œ ì¡°ì¸ ì¡°ê±´ì‹ì— ì‚¬ìš©í•˜ëŠ” í•„ë“œì˜ ì´ë¦„ì´ ë™ì¼í•˜ê³ 
+        ë°˜ë“œì‹œ ë™ì¼í•œ í•„ë“œê°€ í•œê°œì¸ ê²½ìš°ì— í•œí•´ì„œ ì‚¬ìš©í•  ìˆ˜ ìžˆëŠ” ì¡°ì¸
         
-        Çü½Ä ]
+        í˜•ì‹ ]
             SELECT
-                ÇÊµåÀÌ¸§
+                í•„ë“œì´ë¦„
             FROM
-                Å×ÀÌºí1  NATURAL JOIN  Å×ÀÌºí2
+                í…Œì´ë¸”1  NATURAL JOIN  í…Œì´ë¸”2
             ;
         
-        Âü°í ]
-            ON ÀÌ ¾ø´Â ÀÌÀ¯´Â?
-            À§¿¡¼­ ¸»ÇÑ ÀüÁ¦Á¶°Ç ¶§¹®ÀÌ´Ù.
-            Áï, µÎ Å×ÀÌºí¿¡ °°Àº ÀÌ¸§ÀÇ ÇÊµå°¡ µü ÇÑ°³¸¸ ÀÖ´Ù´Â ÀüÁ¦Á¶°ÇÀ¸·Î
-            ÀÚµ¿ÀûÀ¸·Î ±× ÇÊµå¸¦ ÀÌ¿ëÇØ¼­ Á¶ÀÎÇÏ°Ô µÈ´Ù.
+        ì°¸ê³  ]
+            ON ì´ ì—†ëŠ” ì´ìœ ëŠ”?
+            ìœ„ì—ì„œ ë§í•œ ì „ì œì¡°ê±´ ë•Œë¬¸ì´ë‹¤.
+            ì¦‰, ë‘ í…Œì´ë¸”ì— ê°™ì€ ì´ë¦„ì˜ í•„ë“œê°€ ë”± í•œê°œë§Œ ìžˆë‹¤ëŠ” ì „ì œì¡°ê±´ìœ¼ë¡œ
+            ìžë™ì ìœ¼ë¡œ ê·¸ í•„ë“œë¥¼ ì´ìš©í•´ì„œ ì¡°ì¸í•˜ê²Œ ëœë‹¤.
 */
 
--- »ç¿øÀÇ »ç¿øÀÌ¸§, Á÷±Þ, ºÎ¼­ÀÌ¸§, ºÎ¼­À§Ä¡¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ì˜ ì‚¬ì›ì´ë¦„, ì§ê¸‰, ë¶€ì„œì´ë¦„, ë¶€ì„œìœ„ì¹˜ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 
 SELECT
-    ename »ç¿øÀÌ¸§ , job Á÷±Þ , dname ºÎ¼­ÀÌ¸§, loc ºÎ¼­À§Ä¡
+    ename ì‚¬ì›ì´ë¦„ , job ì§ê¸‰ , dname ë¶€ì„œì´ë¦„, loc ë¶€ì„œìœ„ì¹˜
 FROM
     emp
 NATURAL JOIN
@@ -689,22 +690,22 @@ NATURAL JOIN
 
 /*
     USING JOIN
-        ==> ¹Ýµå½Ã Á¶ÀÎ Á¶°Ç½Ä¿¡ »ç¿ëÇÏ´Â ÇÊµåÀÇ ÀÌ¸§ÀÌ µ¿ÀÏÇÑ °æ¿ì
-            °°Àº ÀÌ¸§ÀÇ ÇÊµå°¡ ¿©·¯°³ Á¸ÀçÇØµµ ¹«¹æÇÏ´Ù.
+        ==> ë°˜ë“œì‹œ ì¡°ì¸ ì¡°ê±´ì‹ì— ì‚¬ìš©í•˜ëŠ” í•„ë“œì˜ ì´ë¦„ì´ ë™ì¼í•œ ê²½ìš°
+            ê°™ì€ ì´ë¦„ì˜ í•„ë“œê°€ ì—¬ëŸ¬ê°œ ì¡´ìž¬í•´ë„ ë¬´ë°©í•˜ë‹¤.
         
-        Çü½Ä ]
+        í˜•ì‹ ]
             SELECT
-                Á¶È¸ÇÊµå, ...
+                ì¡°íšŒí•„ë“œ, ...
             FROM
-                Å×ÀÌºí1  JOIN  Å×ÀÌºí2
+                í…Œì´ë¸”1  JOIN  í…Œì´ë¸”2
             USING
-                (Á¶ÀÎÁ¶°Ç½Ä¿¡ »ç¿ëÇÒ ÇÊµåÀÌ¸§)
+                (ì¡°ì¸ì¡°ê±´ì‹ì— ì‚¬ìš©í•  í•„ë“œì´ë¦„)
             ;
 */
 
--- »ç¿øÀÇ »ç¿øÀÌ¸§, Á÷±Þ, ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§, ºÎ¼­À§Ä¡¸¦ Á¶È¸ÇÏ¼¼¿ä.
+-- ì‚¬ì›ì˜ ì‚¬ì›ì´ë¦„, ì§ê¸‰, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„, ë¶€ì„œìœ„ì¹˜ë¥¼ ì¡°íšŒí•˜ì„¸ìš”.
 SELECT
-    e.ename »ç¿øÀÌ¸§, job Á÷±Þ, deptno ºÎ¼­¹øÈ£, dname ºÎ¼­ÀÌ¸§, loc ºÎ¼­À§Ä¡
+    e.ename ì‚¬ì›ì´ë¦„, job ì§ê¸‰, deptno ë¶€ì„œë²ˆí˜¸, dname ë¶€ì„œì´ë¦„, loc ë¶€ì„œìœ„ì¹˜
 FROM
     emp e JOIN dept d
 USING 
