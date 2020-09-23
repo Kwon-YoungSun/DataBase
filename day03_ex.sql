@@ -19,7 +19,7 @@ FROM
 
 /*
     2. 사원의 이름, 입사일, 근무일을 조회하세요.
-        단 근무일은 년, 월 단위로 표현하세요.
+        단 근무일은 년, 월 단위로 표현하세요. --> 체킹
 */
 SELECT
     ename 사원이름,
@@ -40,7 +40,7 @@ SELECT
     LAST_DAY(hiredate) - hiredate + 1 || ' 일' "첫급여 D-DAY"
 FROM
     emp
-;
+; --> 체킹
 
 /*
     4. 사원이 입사후 맞이하는 첫 토요일을 조회하세요.
@@ -49,7 +49,7 @@ SELECT
     ename 사원이름, hiredate 입사일, NEXT_DAY(hiredate, '토') 첫토요일
 FROM
     emp
-;
+; --> 체킹
 
 /*
     5. 근무년수는 입사한 달의 1일을 기준으로 산출해야 한다.
