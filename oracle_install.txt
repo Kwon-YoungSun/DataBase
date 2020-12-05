@@ -1,0 +1,39 @@
+Oracle install
+
+트랜잭션 : 작업의 단위
+DCL : TCL
+
+1. 오라클 홈페이지에 접속
+2. product
+	-> Oracle Database
+	-> Download Oracle Database 19c 클릭
+	-> Oracle Database 11g Release 2 로 이동
+	-> Microsoft Windows (x64) file1&file2 click
+
+3. 다운로드 받은 파일 두개를 선택하고
+	-> 마우스오른쪽 버튼 클릭
+	-> 여기에 압축풀기 선택
+
+관리자 비밀번호 : increpas
+
+4. 계정과 비밀번호
+scott | tiger
+HR | hr
+
+5. 오라클 설치 확인
+
+윈도우키 + r 누르고 ==> cmd 입력하고 엔터 ==> 콘솔화면
+
+콘솔화면에서
+
+(sqlplus는 콘솔 환경에서만 지원하는 프로그램이다.)
+sqlplus scott/tiger
+
+sqlplus는 반드시 exit 명령으로 종료해야 한다..!!(계정이 잠길 수 있다.)
+
+sqldeveloper를 c:\\ProgramFiles에 복사
+sqldeveloper 실행 후 새 접속 클릭 -> scott, hr, system 추가
+
+기본키(Primary key)를 설정하자.
+참조키 제약 조건(foriegn key)
+null : 아직 데이터가 정해지지 않은 상태( != 0)
